@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7B741AB24C9756E00AEA598 /* CanvasContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B741AA24C9756E00AEA598 /* CanvasContainerView.swift */; };
 		A7BBBA6C24C968F300AC1090 /* bluetooth_permissions.json in Resources */ = {isa = PBXBuildFile; fileRef = A7BBBA6B24C968F300AC1090 /* bluetooth_permissions.json */; };
+		A7BBBA6E24C971DE00AC1090 /* AnimationView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BBBA6D24C971DE00AC1090 /* AnimationView+Ext.swift */; };
 		BB0C4884FD9469860E4B4096 /* Pods_lottie_player.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D641FE2D7E54F637316A48 /* Pods_lottie_player.framework */; };
 		DB6607C31E8C2CDE002125B9 /* FlippedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6607C21E8C2CDE002125B9 /* FlippedView.swift */; };
 		DBA359581E4E4DF300F8FF15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA359571E4E4DF300F8FF15 /* AppDelegate.swift */; };
@@ -21,7 +23,9 @@
 		00685B77403191B1501F1A10 /* Pods-lottie-player.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lottie-player.release.xcconfig"; path = "Pods/Target Support Files/Pods-lottie-player/Pods-lottie-player.release.xcconfig"; sourceTree = "<group>"; };
 		08D641FE2D7E54F637316A48 /* Pods_lottie_player.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lottie_player.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42E01C82B6CD626ADB7A2326 /* Pods-lottie-player.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lottie-player.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lottie-player/Pods-lottie-player.debug.xcconfig"; sourceTree = "<group>"; };
+		A7B741AA24C9756E00AEA598 /* CanvasContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasContainerView.swift; sourceTree = "<group>"; };
 		A7BBBA6B24C968F300AC1090 /* bluetooth_permissions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bluetooth_permissions.json; sourceTree = "<group>"; };
+		A7BBBA6D24C971DE00AC1090 /* AnimationView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnimationView+Ext.swift"; sourceTree = "<group>"; };
 		DB6607C21E8C2CDE002125B9 /* FlippedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlippedView.swift; sourceTree = "<group>"; };
 		DBA359541E4E4DF300F8FF15 /* lottie-player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lottie-player.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBA359571E4E4DF300F8FF15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,7 +98,9 @@
 				A7BBBA6A24C968DC00AC1090 /* example_lottie_files */,
 				DBA359571E4E4DF300F8FF15 /* AppDelegate.swift */,
 				DBA359591E4E4DF300F8FF15 /* ViewController.swift */,
+				A7BBBA6D24C971DE00AC1090 /* AnimationView+Ext.swift */,
 				DB6607C21E8C2CDE002125B9 /* FlippedView.swift */,
+				A7B741AA24C9756E00AEA598 /* CanvasContainerView.swift */,
 				DBA3595B1E4E4DF300F8FF15 /* Document.swift */,
 				DBA3595D1E4E4DF300F8FF15 /* Assets.xcassets */,
 				DBA3595F1E4E4DF300F8FF15 /* Main.storyboard */,
@@ -230,6 +236,8 @@
 				DBA359581E4E4DF300F8FF15 /* AppDelegate.swift in Sources */,
 				DBA3595C1E4E4DF300F8FF15 /* Document.swift in Sources */,
 				DB6607C31E8C2CDE002125B9 /* FlippedView.swift in Sources */,
+				A7B741AB24C9756E00AEA598 /* CanvasContainerView.swift in Sources */,
+				A7BBBA6E24C971DE00AC1090 /* AnimationView+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +295,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -330,7 +338,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -345,7 +353,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "lottie-player/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willowtreeapps.lottie-player";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -361,7 +369,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "lottie-player/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willowtreeapps.lottie-player";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";

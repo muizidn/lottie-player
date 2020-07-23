@@ -709,7 +709,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                     </box>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="KzV-dH-kzL" customClass="FlippedView" customModule="lottie_player" customModuleProvider="target">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="KzV-dH-kzL" customClass="CanvasContainerView" customModule="lottie_player" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="395"/>
                                     </customView>
                                     <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="UQ8-FH-WnA">

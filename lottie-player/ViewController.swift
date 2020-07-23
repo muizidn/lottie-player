@@ -30,7 +30,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
 
     var canvas: AnimationView? = nil
     
-    @IBOutlet weak var canvasContainer: NSView!
+    @IBOutlet weak var canvasContainer: CanvasContainerView!
     @IBOutlet weak var slider: NSSlider!
     @IBOutlet weak var playButton: NSButton!
     @IBOutlet weak var controlView: NSView!
@@ -77,6 +77,8 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         DispatchQueue.main.async {
             self.setupInitialAnimationValues()
         }
+        
+        canvasContainer.delegate = self
     }
     
     override var representedObject: Any? {
@@ -318,3 +320,9 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     }
 }
 
+extension ViewController: CanvasContainerDelegate {
+    func handleFileObject(_ url: URL) {
+        guard let data = try? Data(contentsOf: url) else { return }
+        updateCanvas(withAnimation: data)
+    }
+}
