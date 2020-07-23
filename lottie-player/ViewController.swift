@@ -28,7 +28,7 @@ import Lottie
 
 class ViewController: NSViewController, NSTextFieldDelegate {
 
-    var canvas: LOTAnimationView? = nil
+    var canvas: AnimationView? = nil
     
     @IBOutlet weak var canvasContainer: NSView!
     @IBOutlet weak var slider: NSSlider!
@@ -50,7 +50,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     var progressTimer: Timer?
     
     var isActive: Bool {
-        let controller = NSApplication.shared().keyWindow?.contentViewController
+        let controller = NSApplication.shared.keyWindow?.contentViewController
         return controller == self
     }
     
@@ -58,7 +58,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         super.viewDidLoad()
         
         startProgressTimer()
-        NSColorPanel.shared().showsAlpha = true
+        NSColorPanel.shared.showsAlpha = true
         
         if #available(OSX 10.12.2, *) {
             slider.trackFillColor = NSColor(red:0.00, green:0.82, blue:0.76, alpha:1.00)
@@ -70,7 +70,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         
         imageBackgroundView.wantsLayer = true
         imageBackgroundView.layer = CALayer()
-        imageBackgroundView.layer?.contentsGravity = kCAGravityResizeAspectFill
+        imageBackgroundView.layer?.contentsGravity = CALayerContentsGravity.resizeAspectFill
         
         setupKeyPressObserver()
         
@@ -113,19 +113,20 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         animationHeight.doubleValue = Double(canvas?.frame.size.height ?? 0.0)
     }
     
-    func updateCanvas(withAnimation animation: [AnyHashable : Any]) {
+    func updateCanvas(withAnimation animation: Data) {
         if let canvas = self.canvas {
             canvas.removeFromSuperview()
             self.canvas = nil
         }
-        guard let tempCanvas = LOTAnimationView(json: animation) else {
-            return
-        }
+        guard let animation = try? JSONDecoder()
+            .decode(Animation.self, from: animation)
+            else { return }
+        let tempCanvas = AnimationView(animation: animation)
         
-        tempCanvas.loopAnimation = true
-        tempCanvas.contentMode = LOTViewContentMode.scaleAspectFill
+        tempCanvas.loopMode = .loop
+        tempCanvas.contentMode = .scaleAspectFill
         tempCanvas.frame = canvasContainer.bounds
-        tempCanvas.autoresizingMask = [.viewWidthSizable, .viewHeightSizable]
+        tempCanvas.autoresizingMask = [.width, .height]
         canvasContainer.addSubview(tempCanvas)
         self.canvas = tempCanvas
         play()
@@ -156,7 +157,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         openDialog.allowedFileTypes = ["png","jpg","jpeg"]
         openDialog.allowsMultipleSelection = false
         openDialog.beginSheetModal(for: window) { [weak self] result in
-            guard result == NSFileHandlingPanelOKButton,
+            guard result.rawValue == NSFileHandlingPanelOKButton,
                 let imageURL = openDialog.urls.first,
                 let image = NSImage(contentsOf: imageURL) else {
                     return
@@ -168,7 +169,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     
     @IBAction func sliderChangedValue(sender: NSSlider) {
         
-        guard let event = NSApplication.shared().currentEvent else {
+        guard let event = NSApplication.shared.currentEvent else {
             return
         }
         
@@ -182,7 +183,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
             break
         }
         
-        canvas?.animationProgress = CGFloat(sender.doubleValue)
+        canvas?.currentProgress = CGFloat(sender.doubleValue)
     }
     
     func sliderStartedDragging() {
@@ -227,7 +228,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
             return
         }
         let progressTimer = Timer(timeInterval: 0.01, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
-        RunLoop.main.add(progressTimer, forMode: .commonModes)
+        RunLoop.main.add(progressTimer, forMode: .common)
         self.progressTimer = progressTimer
     }
     
@@ -236,15 +237,15 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         progressTimer = nil
     }
     
-    func updateProgress() {
-        slider.doubleValue = Double(canvas?.animationProgress ?? 0.0)
+    @objc func updateProgress() {
+        slider.doubleValue = Double(canvas?.currentProgress ?? 0.0)
     }
     
     func updateAnimationProgress(by value: CGFloat) {
-        guard let currentProgress = canvas?.animationProgress else {
+        guard let currentProgress = canvas?.currentProgress else {
             return
         }
-        canvas?.animationProgress = currentProgress + value
+        canvas?.currentProgress = currentProgress + value
     }
     
     // MARK: Keyboard Events

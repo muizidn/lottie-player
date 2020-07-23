@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7BBBA6C24C968F300AC1090 /* bluetooth_permissions.json in Resources */ = {isa = PBXBuildFile; fileRef = A7BBBA6B24C968F300AC1090 /* bluetooth_permissions.json */; };
 		BB0C4884FD9469860E4B4096 /* Pods_lottie_player.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D641FE2D7E54F637316A48 /* Pods_lottie_player.framework */; };
 		DB6607C31E8C2CDE002125B9 /* FlippedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6607C21E8C2CDE002125B9 /* FlippedView.swift */; };
 		DBA359581E4E4DF300F8FF15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA359571E4E4DF300F8FF15 /* AppDelegate.swift */; };
@@ -20,6 +21,7 @@
 		00685B77403191B1501F1A10 /* Pods-lottie-player.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lottie-player.release.xcconfig"; path = "Pods/Target Support Files/Pods-lottie-player/Pods-lottie-player.release.xcconfig"; sourceTree = "<group>"; };
 		08D641FE2D7E54F637316A48 /* Pods_lottie_player.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lottie_player.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42E01C82B6CD626ADB7A2326 /* Pods-lottie-player.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lottie-player.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lottie-player/Pods-lottie-player.debug.xcconfig"; sourceTree = "<group>"; };
+		A7BBBA6B24C968F300AC1090 /* bluetooth_permissions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bluetooth_permissions.json; sourceTree = "<group>"; };
 		DB6607C21E8C2CDE002125B9 /* FlippedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlippedView.swift; sourceTree = "<group>"; };
 		DBA359541E4E4DF300F8FF15 /* lottie-player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lottie-player.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBA359571E4E4DF300F8FF15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +62,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A7BBBA6A24C968DC00AC1090 /* example_lottie_files */ = {
+			isa = PBXGroup;
+			children = (
+				A7BBBA6B24C968F300AC1090 /* bluetooth_permissions.json */,
+			);
+			path = example_lottie_files;
+			sourceTree = "<group>";
+		};
 		DBA3594B1E4E4DF300F8FF15 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +91,7 @@
 		DBA359561E4E4DF300F8FF15 /* lottie-player */ = {
 			isa = PBXGroup;
 			children = (
+				A7BBBA6A24C968DC00AC1090 /* example_lottie_files */,
 				DBA359571E4E4DF300F8FF15 /* AppDelegate.swift */,
 				DBA359591E4E4DF300F8FF15 /* ViewController.swift */,
 				DB6607C21E8C2CDE002125B9 /* FlippedView.swift */,
@@ -113,7 +124,6 @@
 				DBA359511E4E4DF300F8FF15 /* Frameworks */,
 				DBA359521E4E4DF300F8FF15 /* Resources */,
 				85983F57421A4350E0E47AAF /* [CP] Embed Pods Frameworks */,
-				EBD28DE2068C437B279913CF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -145,6 +155,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -165,6 +176,7 @@
 			files = (
 				DBA3595E1E4E4DF300F8FF15 /* Assets.xcassets in Resources */,
 				DBA359611E4E4DF300F8FF15 /* Main.storyboard in Resources */,
+				A7BBBA6C24C968F300AC1090 /* bluetooth_permissions.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,13 +189,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-lottie-player/Pods-lottie-player-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-lottie-player/Pods-lottie-player-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-lottie-player/Pods-lottie-player-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C3F676DA35F299DBA7D015BC /* [CP] Check Pods Manifest.lock */ = {
@@ -192,28 +207,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-lottie-player-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		EBD28DE2068C437B279913CF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-lottie-player/Pods-lottie-player-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -345,8 +348,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willowtreeapps.lottie-player";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "lottie-player/Lottie+BridgingHeader.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -361,8 +364,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willowtreeapps.lottie-player";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "lottie-player/Lottie+BridgingHeader.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

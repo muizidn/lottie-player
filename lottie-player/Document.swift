@@ -33,8 +33,8 @@ class Document: NSDocument {
         super.init()
         // Add your subclass-specific initialization here.
     }
-
-    override class func autosavesInPlace() -> Bool {
+    
+    override class var autosavesInPlace: Bool {
         return true
     }
     
@@ -53,18 +53,14 @@ class Document: NSDocument {
 
     override func read(from data: Data, ofType typeName: String) throws {
         
-        guard let obj = try JSONSerialization.jsonObject(with: data, options: []) as? [AnyHashable: Any] else {
-            return
-        }
-        
         DispatchQueue.main.async {
-            self.loadAnimationToWindows(animation: obj)
+            self.loadAnimationToWindows(animation: data)
         }
         
         oldModificationDate = getModificationDate(forFileURL: fileURL)
     }
 
-    func loadAnimationToWindows(animation: [AnyHashable: Any]) {
+    func loadAnimationToWindows(animation: Data) {
         windowControllers.forEach {
             if let controller = $0.contentViewController as? ViewController {
                 controller.updateCanvas(withAnimation: animation)
